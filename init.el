@@ -1,7 +1,7 @@
 ;; init.el --- Emacs configuration
 
 ;; INSTALL PACKAGES
-;; -----------------------------------------------------------------
+;; -------------------------------------------------------------------------
 
 (require 'package)
 
@@ -22,6 +22,7 @@
      py-autopep8  ;; add the autopep8 package
      rainbow-delimiters  ;; add the rainbow-delimiters
      web-mode  ;; add the web-mode package
+     emmet-mode  ;; add the emmet-mode/ zen-coding package
      switch-window  ;; add the switch-window package
      ))
 
@@ -34,7 +35,7 @@
 
 
 ;; BASIC CUSTOMIZATION
-;; ------------------------------------------------------------------
+;; --------------------------------------------------------------------------
 
 (setq inhibit-startup-message t)  ;; hide the startup message
 (load-theme 'material t)  ;; load material theme
@@ -53,7 +54,7 @@
 
 
 ;; WEB CONFIGURATION
-;; ------------------------------------------------------------------
+;; --------------------------------------------------------------------------
 
 (require 'yasnippet)
 (yas-global-mode 1)  ;; yasnippet mode enable
@@ -74,9 +75,12 @@
 (setq web-mode-enable-current-element-highlight t)
 (setq web-mode-enable-current-column-highlight t)
 
+(require 'emmet-mode)
+(add-hook 'web-mode-hook 'emmet-mode)  ;; enable emmet-mode/ zen-coding
+(add-hook 'css-mode-hook 'emmet-mode)
 
 ;; PYTHON CONFIGURATION
-;; ------------------------------------------------------------------
+;; -------------------------------------------------------------------------
 
 (elpy-enable)
 ; (elpy-use-ipython)
