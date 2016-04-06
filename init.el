@@ -1,4 +1,7 @@
 ;; init.el --- Emacs configuration
+;; Author: Prabin Man Shrestha
+;; email: shrestha.prabinman@gmail.com
+;; Modified Date: April 06, 2016
 
 ;; INSTALL PACKAGES
 ;; -------------------------------------------------------------------------
@@ -40,6 +43,15 @@
 (setq inhibit-startup-message t)  ;; hide the startup message
 (load-theme 'material t)  ;; load material theme
 (global-linum-mode t)  ;; enable line numbers globally
+(setq column-number-mode t)  ;; display the current column-number
+;; complete anything i.e. company-mode in all buffers
+(add-hook 'after-init-hook 'global-company-mode)
+;; activate company-quickhelp-mode
+(company-quickhelp-mode 1)
+(setq company-quickhelp-delay nil)  ;; delay automatic company-quickhelp
+(eval-after-load 'company
+                 '(define-key company-active-map (kbd "M-h") #'comapny-quickhelp-manual-begin))
+
 (fset 'yes-or-no-p 'y-or-n-p)  ;; ask "y" or "n" instead of "yes" or "no"
 (setq custom-safe-themes t)  ;; telling emacs to trust all themes for  avoiding prompts during each login
 (define-key global-map (kbd "RET") 'newline-and-indent)  ;; enable newline and indent on RET
@@ -74,6 +86,10 @@
 (setq web-mode-enable-auto-closing t)
 (setq web-mode-enable-current-element-highlight t)
 (setq web-mode-enable-current-column-highlight t)
+
+;; javascript configuraton using js-mode and flymake-jslint
+(require 'flymake-jslint)
+(add-hook 'web-mode-hook 'flymake-jslint-load)
 
 (require 'emmet-mode)
 (add-hook 'web-mode-hook 'emmet-mode)  ;; enable emmet-mode/ zen-coding
