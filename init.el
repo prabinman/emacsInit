@@ -21,7 +21,8 @@
      ein
      elpy  ;; add the elpy package
      flycheck  ;; add the flycheck package
-     material-theme
+     solarized-theme
+     cyberpunk-theme
      paredit
      py-autopep8  ;; add the autopep8 package
      rainbow-delimiters  ;; add the rainbow-delimiters
@@ -42,7 +43,10 @@
 ;; --------------------------------------------------------------------------
 
 (setq inhibit-startup-message t)  ;; hide the startup message
-(load-theme 'material t)  ;; load material theme
+;; solarized-dark theme for GUI mode and cyberpunk theme for terminal mode 
+(if (display-graphic-p)
+    (load-theme 'solarized-dark t)
+   (load-theme 'cyberpunk t))
 (global-linum-mode t)  ;; enable line numbers globally
 (setq column-number-mode t)  ;; display the current column-number
 ;; complete anything i.e. company-mode in all buffers
