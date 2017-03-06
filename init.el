@@ -9,7 +9,8 @@
 (require 'package)
 
 (add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+             '(("gnu" . "https://gnu.org/packages/")
+             ("melpa" . "https://melpa.org/packages/") t)))
 
 (package-initialize)
 (when (not package-archive-contents)
